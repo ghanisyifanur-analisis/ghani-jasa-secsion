@@ -3,12 +3,6 @@
 Platform agensi pembuatan website dan aplikasi berbasis web profesional dengan standar kepatuhan **ISO/IEC/IEEE 29148:2018 (Requirements Engineering)** untuk Ujian Akhir Semester / Tugas Besar Web Programming (Semester 5).
 
 ---
-
-## 🌐 Demo Interaktif & Sumber Kode
-- **URL Demo Langsung**: [https://maoneart.my.id/webcraft-agency/](https://maoneart.my.id/webcraft-agency/) *(Alternatif: [https://maoneart.my.id/projek1/](https://maoneart.my.id/projek1/))*
-- **Unduh Source Code (.zip)**: [https://maoneart.my.id/webcraft-agency.zip](https://maoneart.my.id/webcraft-agency.zip)
-- **Repositori GitHub**: [https://github.com/maoneart/webcraft-agency](https://github.com/maoneart/webcraft-agency)
-
 ---
 
 ## 🛠️ Tech Stack & Spesifikasi Teknis
