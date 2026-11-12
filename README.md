@@ -5,6 +5,39 @@ Platform agensi pembuatan website dan aplikasi berbasis web profesional dengan s
 ---
 ---
 
+## 🌐 Deploy ke Domain (Cloudflare Tunnel + Docker + PowerShell)
+
+Website live di **<https://ghani-jasa-secsion.sahir.my.id>** dijalankan dari
+komputer Windows lewat Docker (Laravel 13 + nginx + PostgreSQL 15) dan
+dipublikasikan dengan Cloudflare Tunnel.
+
+**Sekali pasang** (PowerShell Administrator):
+
+```powershell
+git clone https://github.com/ghanisyifanur-analisis/ghani-jasa-secsion.git C:\Project\ghani-jasa-secsion
+cd C:\Project\ghani-jasa-secsion
+powershell -ExecutionPolicy Bypass -File .\scripts\windows\01-Install-Prasyarat.ps1
+powershell -ExecutionPolicy Bypass -File .\scripts\windows\02-Siapkan-Config.ps1
+powershell -ExecutionPolicy Bypass -File .\scripts\windows\03-Deploy.ps1
+powershell -ExecutionPolicy Bypass -File .\scripts\windows\05-Autostart.ps1
+```
+
+**Update rutin**: `.\scripts\windows\03-Deploy.ps1`
+**Cek kesehatan**: `.\scripts\windows\04-Status.ps1`
+
+| Bagian | Isi |
+| :--- | :--- |
+| [`docs/DEPLOY-WINDOWS.md`](docs/DEPLOY-WINDOWS.md) | Panduan lengkap + penjelasan ELI5 setiap perintah, troubleshooting, opsi 24/7 |
+| `scripts/windows/` | 6 script PowerShell: prasyarat, konfigurasi, deploy, status, auto-start, start stack |
+| `docker/prod/` | Dockerfile produksi (nginx + php-fpm 8.3), konfigurasi nginx/PHP/supervisord, halaman fallback |
+| `docker-compose.prod.yml` | Stack produksi: `app` + `db` (PostgreSQL) + `cloudflared` |
+| `.github/workflows/` | CI (lint & kompilasi view) dan build image ke GHCR |
+
+> GitHub Pages (`docs/`) tetap aktif sebagai versi statis. Domain menjalankan
+> aplikasi Laravel penuh: login multi-role, kalkulator, invoice, dan dashboard.
+
+---
+
 ## 🛠️ Tech Stack & Spesifikasi Teknis
 - **Backend Framework**: Laravel 11 / 13 (PHP 8.2+)
 - **Database Utama**: PostgreSQL 15 (Docker Production) & SQLite / MariaDB (Local / Testing)
