@@ -1,0 +1,29 @@
+# =====================================================================
+# cloudflared.service — tunnel Cloudflare TANPA Docker (systemd Linux)
+#
+# Jalankan sekali:
+#   sudo cp scripts/background/cloudflared.service /etc/systemd/system/
+#   sudo nano /etc/systemd/system/cloudflared.service   # isi token di bawah
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now cloudflared
+#
+# Tunnel = "terowongan" dari internet ke komputer Anda tanpa membuka port
+# router dan tanpa IP publik. Cocok untuk app yang jalan di port 8000.
+# =====================================================================
+[Unit]
+Description=Cloudflare Tunnel (WebCraft Agency)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# Ganti TOKEN_DI_BAWAH_INI dengan token dari
+# Cloudflare Zero Trust > Networks > Tunnels > (tunnel) > Install connector
+Environment=TUNNEL_TOKEN=TOKEN_DI_BAWAH_INI
+ExecStart=/usr/local/bin/cloudflared --no-autoupdate tunnel run
+Restart=always
+RestartSec=5
+User=root
+
+[Install]
+WantedBy=multi-user.target

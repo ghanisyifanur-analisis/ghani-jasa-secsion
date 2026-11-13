@@ -1,0 +1,197 @@
+@import "tailwindcss";
+
+/* Font disajikan dari domain sendiri (docs/assets/fonts) — tanpa CDN. */
+@font-face {
+    font-family: "Instrument Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("./fonts/instrument-sans-400.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Instrument Sans";
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url("./fonts/instrument-sans-500.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Instrument Sans";
+    font-style: normal;
+    font-weight: 600 800;
+    font-display: swap;
+    src: url("./fonts/instrument-sans-600.woff2") format("woff2");
+}
+
+/* ======================================================================
+   WebCraft Agency — Design System (MaoneArt Glassmorphism Dark)
+   Sumber CSS untuk situs publik app.syifanur.my.id.
+   Hasil build: docs/assets/app.css  (lihat scripts/build-docs.sh)
+   ====================================================================== */
+
+@source "../docs/index.html";
+@source "../docs/demo/index.html";
+@source "../docs/demo/demo.js";
+@source "../docs/demo/checkout.html";
+@source "../docs/404.html";
+
+@theme {
+    --font-sans: "Instrument Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+
+    --color-brand-50: #eef2ff;
+    --color-brand-100: #e0e7ff;
+    --color-brand-200: #c7d2fe;
+    --color-brand-300: #a5b4fc;
+    --color-brand-400: #818cf8;
+    --color-brand-500: #6366f1;
+    --color-brand-600: #4f46e5;
+    --color-brand-700: #4338ca;
+
+    --color-ink-950: #07090e;
+    --color-ink-900: #0b0f19;
+    --color-ink-800: #111827;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+        background-color: var(--color-ink-950);
+        color: #f3f4f6;
+        font-family: var(--font-sans);
+        background-image:
+            radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.14) 0px, transparent 50%),
+            radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.1) 0px, transparent 50%),
+            radial-gradient(at 50% 50%, rgba(14, 165, 233, 0.06) 0px, transparent 50%);
+        background-attachment: fixed;
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+        background: var(--color-brand-500);
+        color: #fff;
+    }
+
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        background: var(--color-ink-900);
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #374151;
+        border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #4b5563;
+    }
+
+    ion-icon {
+        display: inline-block;
+        vertical-align: -0.125em;
+    }
+}
+
+@layer components {
+    .glass-panel {
+        background: rgba(15, 23, 42, 0.72);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+
+    .glass-nav {
+        background: rgba(11, 15, 25, 0.85);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .glass-input {
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: #f3f4f6;
+        transition: all 0.2s ease;
+    }
+
+    .glass-input:focus {
+        background: rgba(15, 23, 42, 0.9);
+        border-color: var(--color-brand-500);
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        outline: none;
+    }
+
+    .gradient-text {
+        background-image: linear-gradient(90deg, var(--color-brand-400), #a5b4fc, #c084fc);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+}
+
+/* Animasi masuk yang halus (dipakai di hero & kartu) */
+@layer utilities {
+    .animate-fade-up {
+        animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    .animate-fade-up-1 {
+        animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both;
+    }
+    .animate-fade-up-2 {
+        animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.16s both;
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    .animate-fade-up,
+    .animate-fade-up-1,
+    .animate-fade-up-2 {
+        animation: none;
+    }
+}
+
+/* ----------------------------------------------------------------------
+   Gaya cetak: dipakai tombol "Cetak / Simpan PDF" pada BAST
+   ---------------------------------------------------------------------- */
+@media print {
+    body {
+        background: #fff !important;
+        color: #000 !important;
+    }
+    header,
+    footer,
+    #toast,
+    .print\:hidden {
+        display: none !important;
+    }
+    main {
+        max-width: none !important;
+        padding: 0 !important;
+    }
+    article {
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+    }
+}

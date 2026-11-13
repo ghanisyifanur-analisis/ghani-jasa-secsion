@@ -1,0 +1,13 @@
+{
+    "name": "webcraft-docs",
+    "private": true,
+    "description": "Build aset untuk situs statis GitHub Pages (docs/) — dipakai https://app.syifanur.my.id",
+    "scripts": {
+        "build": "tailwindcss -i app.css -o ../docs/assets/app.css --minify",
+        "watch": "tailwindcss -i app.css -o ../docs/assets/app.css --watch"
+    },
+    "devDependencies": {
+        "@tailwindcss/cli": "^4.0.0",
+        "tailwindcss": "^4.0.0"
+    }
+}

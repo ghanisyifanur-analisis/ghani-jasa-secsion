@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Menyiapkan pemesanan — WebCraft Agency</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/app.css">
+<!--
+  Halaman jembatan: kalkulator di halaman utama mengirim ?package=…&addons[]=…
+  ke sini, lalu diteruskan ke demo SPA (#/checkout?…) sehingga tautan tetap
+  bisa dibagikan sebagai URL biasa.
+-->
+<script>
+  (function () {
+    var q = window.location.search || '';
+    window.location.replace('./index.html#/checkout' + q);
+  })();
+</script>
+</head>
+<body class="min-h-screen flex items-center justify-center p-6">
+  <div class="glass-panel rounded-2xl p-6 text-center max-w-sm">
+    <p class="text-sm text-slate-300">Menyiapkan halaman pemesanan…</p>
+    <p class="text-xs text-slate-500 mt-2">Jika tidak berpindah otomatis, <a class="text-brand-300 underline" href="./index.html#/checkout">klik di sini</a>.</p>
+  </div>
+</body>
+</html>

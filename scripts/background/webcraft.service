@@ -1,0 +1,58 @@
+# =====================================================================
+# webcraft.service — Laravel jalan permanen TANPA Docker (systemd Linux)
+#
+# Cara pakai (sekali saja):
+#   sudo cp scripts/background/webcraft.service /etc/systemd/system/
+#   sudo nano /etc/systemd/system/webcraft.service   # sesuaikan User & path
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now webcraft
+#
+# Cek:    systemctl status webcraft
+# Log:    journalctl -u webcraft -f
+# Restart: sudo systemctl restart webcraft
+#
+# Setelah aktif, aplikasi hidup otomatis saat server reboot dan restart
+# sendiri kalau crash — inilah "selalu berjalan di latar belakang".
+# =====================================================================
+[Unit]
+Description=WebCraft Agency (Laravel, tanpa Docker)
+After=network.target
+
+[Service]
+Type=simple
+# Ganti "www-data" bila Anda memakai user lain (mis. "ubuntu" di VPS)
+User=www-data
+Group=www-data
+# Ganti path ini sesuai lokasi repo di server Anda
+WorkingDirectory=/var/www/ghani-jasa-secsion
+
+# Port 8000 untuk server bawaan PHP. Untuk trafik produksi yang lebih berat,
+# pasang Nginx + php-fpm (lihat docs/DEPLOY-TANPA-DOCKER.md bagian Nginx).
+ExecStart=/usr/bin/php -S 0.0.0.0:8000 -t /var/www/ghani-jasa-secsion/public /var/www/ghani-jasa-secsion/public/index.php
+
+Restart=always
+RestartSec=3
+# Batasi agar tidak "spam restart" kalau konfigurasi salah
+StartLimitIntervalSec=60
+StartLimitBurst=10
+
+Environment=APP_ENV=production
+Environment=APP_DEBUG=false
+
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+
+# =====================================================================
+# Opsional: worker antrean (kalau QUEUE_CONNECTION bukan "sync").
+# Tambahkan service kedua bernama webcraft-queue.service dengan isi:
+#
+#   [Service]
+#   User=www-data
+#   WorkingDirectory=/var/www/ghani-jasa-secsion
+#   ExecStart=/usr/bin/php /var/www/ghani-jasa-secsion/artisan queue:work --sleep=3 --tries=3 --max-time=3600
+#   Restart=always
+#   RestartSec=3
+# =====================================================================

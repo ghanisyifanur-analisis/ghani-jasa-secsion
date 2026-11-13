@@ -5,43 +5,56 @@ Platform agensi pembuatan website dan aplikasi berbasis web profesional dengan s
 ---
 ---
 
-## 🌐 Deploy ke Domain (Cloudflare Tunnel + Docker + PowerShell)
+## 🌐 Situs Publik — <https://app.syifanur.my.id>
 
-Website live di **<https://ghani-jasa-secsion.sahir.my.id>** dijalankan dari
-komputer Windows lewat Docker (Laravel 13 + nginx + PostgreSQL 15) dan
-dipublikasikan dengan Cloudflare Tunnel.
-
-**Sekali pasang** (PowerShell Administrator):
-
-```powershell
-git clone https://github.com/ghanisyifanur-analisis/ghani-jasa-secsion.git C:\Project\ghani-jasa-secsion
-cd C:\Project\ghani-jasa-secsion
-powershell -ExecutionPolicy Bypass -File .\scripts\windows\01-Install-Prasyarat.ps1
-powershell -ExecutionPolicy Bypass -File .\scripts\windows\02-Siapkan-Config.ps1
-powershell -ExecutionPolicy Bypass -File .\scripts\windows\03-Deploy.ps1
-powershell -ExecutionPolicy Bypass -File .\scripts\windows\05-Autostart.ps1
-```
-
-**Update rutin**: `.\scripts\windows\03-Deploy.ps1`
-**Cek kesehatan**: `.\scripts\windows\04-Status.ps1`
+Situs publik **tidak memakai Docker** dan tidak butuh komputer yang menyala:
+halaman statis di folder `docs/` dilayani **GitHub Pages** (CDN global, HTTPS
+otomatis), termasuk **demo interaktif** yang berjalan penuh di browser.
 
 | Bagian | Isi |
 | :--- | :--- |
-| [`docs/DEPLOY-WINDOWS.md`](docs/DEPLOY-WINDOWS.md) | Panduan lengkap + penjelasan ELI5 setiap perintah, troubleshooting, opsi 24/7 |
-| `scripts/windows/` | 6 script PowerShell: prasyarat, konfigurasi, deploy, status, auto-start, start stack |
-| `docker/prod/` | Dockerfile produksi (nginx + php-fpm 8.3), konfigurasi nginx/PHP/supervisord, halaman fallback |
-| `docker-compose.prod.yml` | Stack produksi: `app` + `db` (PostgreSQL) + `cloudflared` |
-| `.github/workflows/` | CI (lint & kompilasi view) dan build image ke GHCR |
+| `docs/index.html` | Beranda: katalog 4 paket, kalkulator biaya + split termin, alur 5 fase, FAQ |
+| `docs/demo/` | Demo interaktif tanpa server: 5 peran, invoice, milestone, vault AES-256, BAST |
+| `docs-src/app.css` | Sumber Tailwind v4 → dibangun menjadi `docs/assets/app.css` |
+| `docs/assets/` | Font, ikon, dan CSS **lokal** (tanpa CDN pihak ketiga) |
+| [`docs/DEPLOY-TANPA-DOCKER.md`](docs/DEPLOY-TANPA-DOCKER.md) | Panduan: tanpa Docker, selalu jalan di latar belakang, tahan bertahun-tahun |
+| `scripts/background/` | Windows Service (NSSM), systemd Linux, watchdog lintas platform, Termux boot |
+| `scripts/build-docs.sh` | Membangun ulang CSS situs statis (`bash scripts/build-docs.sh`) |
+| `.github/workflows/deploy-pages.yml` | Verifikasi otomatis situs sebelum dipublikasikan |
 
-> GitHub Pages (`docs/`) tetap aktif sebagai versi statis. Domain menjalankan
-> aplikasi Laravel penuh: login multi-role, kalkulator, invoice, dan dashboard.
+**Agar situs tidak pernah mati**
+
+- Halaman publik = file statis → tidak ada server yang bisa crash.
+- Demo = JavaScript murni + `localStorage` → tidak butuh database.
+- Semua aset lokal → tidak bergantung CDN yang bisa tutup.
+- Kode di GitHub → bisa dipindah ke hosting lain kapan saja.
+
+**Kalau butuh aplikasi Laravel penuh (login & database asli)**
+
+```powershell
+# Windows — sekali jalan, lalu hidup otomatis di latar belakang tanpa Docker
+powershell -ExecutionPolicy Bypass -File .\scripts\background\install-windows-service.ps1
+```
+
+```bash
+# Linux / Termux — web + queue + watchdog (auto-restart)
+bash scripts/background/jalankan-latar.sh start
+bash scripts/background/jalankan-latar.sh status
+```
+
+Detail lengkap (Cloudflare Tunnel tanpa Docker, DNS GitHub Pages, troubleshooting):
+[`docs/DEPLOY-TANPA-DOCKER.md`](docs/DEPLOY-TANPA-DOCKER.md).
+
+> Jalur Docker (`docker-compose.prod.yml`, `scripts/windows/`, `docs/DEPLOY-WINDOWS.md`)
+> tetap tersedia sebagai **opsi**, bukan syarat. Situs publik tidak memakainya.
 
 ---
 
 ## 🛠️ Tech Stack & Spesifikasi Teknis
 - **Backend Framework**: Laravel 11 / 13 (PHP 8.2+)
-- **Database Utama**: PostgreSQL 15 (Docker Production) & SQLite / MariaDB (Local / Testing)
-- **Containerization**: Docker & Docker Compose multi-service (`laravel_app` & `postgres_db`)
+- **Database Utama**: SQLite (tanpa server DB, untuk produksi ringan) & PostgreSQL 15 / MariaDB (opsional)
+- **Publikasi**: GitHub Pages (statis + demo) dan Cloudflare Tunnel (aplikasi dinamis)
+- **Containerization**: Docker & Docker Compose — **opsional**, tidak diperlukan untuk situs publik
 - **Frontend & Styling**: Tailwind CSS, IonIcons 7, MaoneArt Glassmorphism Dark Theme
 - **Enkripsi Kredensial**: AES-256-CBC (Gated Access Protocol)
 - **Payment Gateway**: Midtrans Snap / Webhook Idempotency Simulation

@@ -1,14 +1,16 @@
 name: Build & Publish Image
 
-# Setiap push ke main, image Docker produksi dibangun lalu disimpan di
-# GitHub Container Registry (GHCR). Komputer Windows tinggal "pull" image
-# itu, jadi proses deploy di PC cuma butuh beberapa detik.
+# OPSIONAL. Situs publik TIDAK memakai Docker (lihat docs/DEPLOY-TANPA-DOCKER.md).
+# Image ini hanya dibangun bila Anda tetap ingin menjalankan versi Docker:
+# setiap push ke main, image produksi disimpan di GHCR sehingga komputer
+# tinggal "pull" dan tidak perlu build ulang.
 
 on:
   push:
     branches: [main]
     paths-ignore:
       - "docs/**"
+      - "docs-src/**"
       - "**.md"
   workflow_dispatch:
 
