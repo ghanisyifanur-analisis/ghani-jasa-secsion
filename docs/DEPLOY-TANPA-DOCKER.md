@@ -254,6 +254,40 @@ curl -I http://127.0.0.1:8000/up            # harapan: HTTP/1.1 200 OK
 
 ---
 
+## Kalau domain menampilkan 502 Bad Gateway (khusus pengaturan Cloudflare)
+
+Gejala: `https://app.syifanur.my.id` menampilkan halaman **Cloudflare 502 Bad gateway**,
+padahal di GitHub sudah tertulis *Your site is live at ...* (Settings → Pages).
+
+Artinya: **sisi GitHub sudah benar**, tetapi Cloudflare meneruskan permintaan ke
+"origin" yang tidak hidup — biasanya sisa dari era Docker/Tunnel, atau Worker.
+
+Cek berurutan di dashboard Cloudflare (akun yang mengelola `syifanur.my.id`):
+
+1. **DNS → Records**: baris `app` harus
+   `CNAME  app  ghanisyifanur-analisis.github.io  **Proxy: DNS only (abu-abu)**`.
+   - Kalau masih menunjuk `*.cfargotunnel.com`, itu jejak tunnel Docker yang sudah mati → ubah.
+   - Kalau kuncinya **oranye (Proxied)**, klik Edit → matikan proxy → Save.
+
+2. **Workers & Pages → ghani-jasa-secsion → Settings → Triggers/Routes**:
+   hapus route `app.syifanur.my.id/*` bila ada. Route Worker selalu menang atas DNS,
+   jadi selama ada, perubahan DNS tidak berpengaruh.
+
+3. **Zero Trust → Networks → Tunnels**: kalau ada Public Hostname `app.syifanur.my.id`
+   pada tunnel yang sudah tidak jalan, hapus hostname tersebut.
+
+4. Tunggu 1–5 menit, lalu buka lagi. Halaman yang benar diawali judul
+   **“WebCraft Agency — Jasa Pembuatan Website & Aplikasi Bisnis”**.
+
+Penjelasan singkat kenapa begini: di Cloudflare, urutan yang dilayani adalah
+**Worker → Tunnel → DNS**. Satu saja dari yang lebih atas masih aktif, DNS yang
+sudah benar pun tidak akan terpakai.
+
+Kalau ingin memakai Cloudflare proxy (oranye) supaya ada cache & WAF, boleh —
+asalkan DNS-nya benar dan **tidak ada** Worker/tunnel yang menyerobot hostname itu.
+
+---
+
 ## Troubleshooting
 
 | Gejala | Penyebab | Solusi |
