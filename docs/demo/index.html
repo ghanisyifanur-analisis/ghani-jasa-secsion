@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Demo Interaktif — WebCraft Agency</title>
+<meta name="description" content="Demo interaktif WebCraft Agency tanpa server: login 5 peran, kalkulator, invoice DP, milestone, vault AES-256, dan BAST.">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/app.css">
+<style>
+  [x-cloak]{display:none!important}
+</style>
+</head>
+<body class="min-h-screen">
+
+<header class="sticky top-0 z-40 glass-nav">
+  <div class="max-w-6xl mx-auto px-4 flex items-center justify-between h-16 gap-4">
+    <a href="../" class="flex items-center gap-2 shrink-0">
+      <span class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-400 flex items-center justify-center text-white"><ion-icon name="code-slash-outline" class="text-lg"></ion-icon></span>
+      <span class="hidden sm:flex items-baseline gap-1.5">
+        <span class="text-base font-bold text-white">WebCraft</span>
+        <span class="text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/25">DEMO</span>
+      </span>
+    </a>
+
+    <nav id="navLinks" class="hidden md:flex items-center gap-5 text-sm"></nav>
+
+    <div class="flex items-center gap-2">
+      <a href="../" class="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 transition" title="Kembali ke situs utama"><ion-icon name="home-outline" class="text-lg"></ion-icon></a>
+      <button id="btnReset" type="button" class="p-2 rounded-lg text-slate-300 hover:text-rose-300 hover:bg-rose-500/10 transition" title="Reset data demo"><ion-icon name="refresh-outline" class="text-lg"></ion-icon></button>
+      <div id="userChip" class="hidden items-center gap-2 pl-2"></div>
+    </div>
+  </div>
+</header>
+
+<main id="app" class="max-w-6xl mx-auto px-4 py-8"></main>
+
+<footer class="max-w-6xl mx-auto px-4 py-8 text-[11px] text-slate-500 flex flex-wrap items-center justify-between gap-3 border-t border-white/5 mt-10">
+  <span>Data demo disimpan di browser Anda (localStorage). Tidak ada data yang dikirim ke server.</span>
+  <a href="../" class="hover:text-slate-300">← Situs utama</a>
+</footer>
+
+<div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-xl glass-panel text-sm text-white border border-white/15 opacity-0 pointer-events-none transition-all"></div>
+
+<script type="module" src="../assets/ionicons/ionicons.esm.js"></script>
+<script nomodule src="../assets/ionicons/ionicons.js"></script>
+<script type="module" src="demo.js"></script>
+</body>
+</html>

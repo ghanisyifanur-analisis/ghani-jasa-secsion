@@ -29,3 +29,6 @@ Thumbs.db
 
 # Backup database hasil deploy PowerShell
 /backups/
+
+# Build helper situs statis (instalasi lokal, tidak perlu di-commit)
+/docs-src/node_modules/

@@ -1,0 +1,107 @@
+name: Deploy Situs Statis
+
+# Situs publik (https://app.syifanur.my.id) adalah halaman statis di folder
+# docs/. Workflow ini memastikan hanya build yang sehat yang naik ke publik.
+#
+# CATATAN PENTING:
+# GitHub Pages untuk repo ini disetel ke mode "Deploy from a branch"
+# (branch main, folder /docs) dan domain kustom diatur di Settings > Pages.
+# Workflow ini TIDAK mengubah sumber Pages — ia hanya memverifikasi bahwa
+# folder docs/ konsisten sebelum GitHub Pages membangunnya sendiri.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "docs/**"
+      - "docs-src/**"
+      - "scripts/build-docs.sh"
+      - ".github/workflows/deploy-pages.yml"
+  pull_request:
+    paths:
+      - "docs/**"
+      - "docs-src/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: docs-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Verifikasi situs statis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ambil kode
+        uses: actions/checkout@v4
+
+      - name: Siapkan Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Cek file wajib
+        run: |
+          set -e
+          for f in docs/index.html docs/404.html docs/CNAME docs/demo/index.html \
+                   docs/demo/demo.js docs/assets/app.css docs/assets/favicon.svg \
+                   docs/sitemap.xml docs/robots.txt docs/assets/ionicons/ionicons.esm.js \
+                   docs/assets/fonts/instrument-sans-400.woff2; do
+            test -s "$f" || { echo "HILANG/KOSONG: $f"; exit 1; }
+          done
+          echo "Semua file wajib ada."
+
+      - name: Domain kustom benar
+        run: |
+          test "$(tr -d '\r\n' < docs/CNAME)" = "app.syifanur.my.id" \
+            || { echo "docs/CNAME harus berisi app.syifanur.my.id"; exit 1; }
+
+      - name: Tidak boleh bergantung pada CDN luar
+        run: |
+          if grep -nE 'cdn\.tailwindcss\.com|unpkg\.com|fonts\.googleapis\.com|cdn\.jsdelivr\.net' docs/index.html docs/demo/index.html; then
+            echo "Halaman publik harus mandiri (tanpa CDN pihak ketiga)."
+            exit 1
+          fi
+          echo "Semua aset lokal."
+
+      - name: Situs tidak boleh menunjuk host lama
+        run: |
+          if grep -rn "ghani-jasa-secsion.sahir.my.id" docs/*.html docs/demo/*.html; then
+            echo "Masih ada tautan ke host Docker lama (ghani-jasa-secsion.sahir.my.id)."
+            exit 1
+          fi
+          echo "Tautan bersih."
+
+      - name: Tidak ada file Jekyll berbahaya di docs/
+        run: |
+          if [ -e docs/_config.yml ] || [ -e docs/Gemfile ]; then
+            echo "Hapus _config.yml/Gemfile: keduanya membuat GitHub Pages berhenti memakai .nojekyll."
+            exit 1
+          fi
+          test -f docs/.nojekyll || { echo "docs/.nojekyll hilang."; exit 1; }
+          echo "Konfigurasi Pages aman."
+
+      - name: Cek sintaks JavaScript
+        run: |
+          node --check docs/demo/demo.js
+          echo "demo.js valid."
+
+      - name: Bangun ulang CSS dan pastikan hasilnya sama
+        run: |
+          cd docs-src
+          npm install --no-audit --no-fund --silent
+          npx --no-install tailwindcss -i app.css -o ../docs/assets/app.css --minify
+          cd ..
+          if ! git diff --quiet -- docs/assets/app.css; then
+            echo "docs/assets/app.css tidak sinkron dengan sumbernya."
+            echo "Jalankan: bash scripts/build-docs.sh lalu commit."
+            git --no-pager diff --stat -- docs/assets/app.css
+            exit 1
+          fi
+          echo "CSS sinkron."
+
+      - name: Ringkasan
+        run: echo "Situs siap dipublikasikan oleh GitHub Pages (docs/)."

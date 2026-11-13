@@ -1,568 +1,704 @@
-﻿<!DOCTYPE html>
-<html lang="id" class="dark">
+<!DOCTYPE html>
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="kOLoMQuxzcJEJw5iNr4BBu7JylhRw2pyb41Mpz5K">
-    <title>WebCraft Agency - Solusi Pembuatan Website &amp; Aplikasi Bisnis - Professional Web Development Platform</title>
-    
-    <!-- Google Fonts & Tailwind CSS CDN -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <title>WebCraft Agency — Jasa Pembuatan Website & Aplikasi Bisnis</title>
+    <meta name="description" content="WebCraft Agency: jasa pembuatan website & aplikasi bisnis dengan alur 5 fase milestone, split invoice DP 50%, staging review, dan serah terima kredensial terenkripsi AES-256.">
+    <meta name="theme-color" content="#07090E">
+    <meta name="robots" content="index, follow">
 
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        mono: ['"JetBrains Mono"', 'monospace'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#eef2ff',
-                            100: '#e0e7ff',
-                            400: '#818cf8',
-                            500: '#6366f1',
-                            600: '#4f46e5',
-                            700: '#4338ca',
-                        },
-                        dark: {
-                            base: '#0B0F19',
-                            card: 'rgba(17, 24, 39, 0.75)',
-                            border: 'rgba(255, 255, 255, 0.08)',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Open Graph / pratinjau tautan -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="WebCraft Agency">
+    <meta property="og:title" content="WebCraft Agency — Jasa Pembuatan Website & Aplikasi Bisnis">
+    <meta property="og:description" content="Alur kerja 5 fase, split invoice DP 50% & pelunasan, staging review interaktif, penyerahan kredensial AES-256, dan BAST digital.">
+    <meta property="og:url" content="https://app.syifanur.my.id/">
+    <meta property="og:locale" content="id_ID">
 
-    <style>
-        body {
-            background-color: #07090E;
-            color: #F3F4F6;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.10) 0px, transparent 50%),
-                radial-gradient(at 50% 50%, rgba(14, 165, 233, 0.06) 0px, transparent 50%);
-            background-attachment: fixed;
-            min-height: 100vh;
-        }
+    <link rel="canonical" href="https://app.syifanur.my.id/">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="assets/favicon.svg">
 
-        .glass-panel {
-            background: rgba(15, 23, 42, 0.72);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-        }
-
-        .glass-nav {
-            background: rgba(11, 15, 25, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-        }
-
-        .glass-input {
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            color: #F3F4F6;
-            transition: all 0.2s ease;
-        }
-
-        .glass-input:focus {
-            background: rgba(15, 23, 42, 0.9);
-            border-color: #6366f1;
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
-            outline: none;
-        }
-
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0B0F19;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #374151;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #4B5563;
-        }
-    </style>
+    <!-- Semua aset disajikan dari domain ini sendiri: tidak butuh CDN luar -->
+    <link rel="preload" href="assets/fonts/instrument-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="assets/app.css">
+    <script type="module" src="assets/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="assets/ionicons/ionicons.js"></script>
 </head>
-<body class="flex flex-col min-h-screen antialiased selection:bg-brand-500 selection:text-white">
+<body class="flex flex-col min-h-screen antialiased">
 
-    <!-- Top Navigation Bar -->
-    <header class="sticky top-0 z-40 glass-nav">
+<!-- ===================== NAVBAR ===================== -->
+<header class="sticky top-0 z-40 glass-nav">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16 gap-4">
+            <a href="./" class="flex items-center gap-2.5 group shrink-0" aria-label="WebCraft Agency — beranda">
+                <span class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-400 flex items-center justify-center text-white shadow-lg shadow-brand-500/30 group-hover:scale-105 transition-transform duration-200">
+                    <ion-icon name="code-slash-outline" class="text-xl"></ion-icon>
+                </span>
+                <span class="flex items-baseline gap-1.5">
+                    <span class="text-lg font-bold tracking-tight text-white">WebCraft</span>
+                    <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-brand-500/10 text-brand-300 border border-brand-500/20">Agency</span>
+                </span>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-7 text-sm font-medium">
+                <a href="#katalog" class="text-slate-300 hover:text-white transition-colors">Paket Layanan</a>
+                <a href="#kalkulator" class="text-slate-300 hover:text-white transition-colors">Kalkulator</a>
+                <a href="#alur-kerja" class="text-slate-300 hover:text-white transition-colors">5 Fase Kerja</a>
+                <a href="#faq" class="text-slate-300 hover:text-white transition-colors">FAQ</a>
+            </nav>
+
+            <div class="flex items-center gap-2.5">
+                <a href="demo/" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-lg glass-panel text-slate-200 hover:bg-white/10 border border-white/10 transition-all">
+                    <ion-icon name="play-circle-outline" class="text-base text-brand-300"></ion-icon>
+                    <span>Demo Interaktif</span>
+                </a>
+                <a href="#kalkulator" class="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-lg bg-gradient-to-r from-brand-600 to-indigo-500 text-white shadow-md shadow-brand-500/20 hover:from-brand-500 hover:to-indigo-400 transition-all">
+                    <span>Pesan Website</span>
+                    <ion-icon name="arrow-forward" class="text-base"></ion-icon>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="flex-grow">
+
+    <!-- ===================== HERO ===================== -->
+    <section class="relative overflow-hidden pt-14 pb-16 sm:pt-20 sm:pb-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <!-- Brand / Logo -->
-                <div class="flex items-center gap-3">
-                    <a href="https://ghani-jasa-secsion.sahir.my.id" class="flex items-center gap-2 group">
-                        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-400 flex items-center justify-center text-white shadow-lg shadow-brand-500/30 group-hover:scale-105 transition-transform duration-200">
-                            <ion-icon name="code-slash-outline" class="text-xl font-bold"></ion-icon>
-                        </div>
-                        <div>
-                            <span class="text-lg font-bold tracking-tight bg-gradient-to-r from-white via-slate-100 to-brand-400 bg-clip-text text-transparent">WebCraft</span>
-                            <span class="text-xs font-semibold px-2 py-0.5 ml-1.5 rounded-full bg-brand-500/10 text-brand-400 border border-brand-500/20">Agency</span>
-                        </div>
+            <div class="text-center max-w-3xl mx-auto space-y-6">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-300 text-xs font-semibold animate-fade-up">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Situs aktif 24 jam • dihosting di GitHub Pages</span>
+                </div>
+
+                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-[1.1] animate-fade-up-1">
+                    Transformasi Digital Bisnis Anda dengan
+                    <span class="gradient-text">Website Kelas Industri</span>
+                </h1>
+
+                <p class="text-slate-300 text-base sm:text-lg leading-relaxed animate-fade-up-2">
+                    Platform agensi pembuatan website modern: alur kerja transparan 5 fase milestone,
+                    split invoice DP 50% &amp; pelunasan, staging review interaktif, serta penyerahan
+                    kredensial aman terenkripsi AES-256.
+                </p>
+
+                <div class="flex flex-wrap items-center justify-center gap-3.5 pt-3 animate-fade-up-2">
+                    <a href="#kalkulator" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold text-sm shadow-xl shadow-brand-500/25 transition-all">
+                        <ion-icon name="calculator-outline" class="text-lg"></ion-icon>
+                        <span>Hitung Estimasi Biaya</span>
+                    </a>
+                    <a href="demo/" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl glass-panel hover:bg-white/10 text-slate-200 font-semibold text-sm border border-white/10 transition-all">
+                        <ion-icon name="key-outline" class="text-lg text-brand-300"></ion-icon>
+                        <span>Coba Demo 5 Akun</span>
                     </a>
                 </div>
 
-                <!-- Navigation Links -->
-                <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
-                    <a href="https://ghani-jasa-secsion.sahir.my.id#katalog" class="text-slate-300 hover:text-white transition-colors">Paket Layanan</a>
-                    <a href="https://ghani-jasa-secsion.sahir.my.id#kalkulator" class="text-slate-300 hover:text-white transition-colors">Kalkulator Estimasi</a>
-                    <a href="https://ghani-jasa-secsion.sahir.my.id#alur-kerja" class="text-slate-300 hover:text-white transition-colors">5 Fase Alur Kerja</a>
-                    
-                                    </nav>
-
-                <!-- Action Button & User Role Switcher -->
-                <div class="flex items-center gap-3">
-                                            <a href="https://ghani-jasa-secsion.sahir.my.id/login" class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors">Masuk</a>
-                        <a href="https://ghani-jasa-secsion.sahir.my.id#kalkulator" class="px-4 py-2 text-sm font-semibold rounded-lg bg-gradient-to-r from-brand-600 to-indigo-500 text-white shadow-md shadow-brand-500/20 hover:from-brand-500 hover:to-indigo-400 transition-all">Pesan Website</a>
-                                    </div>
+                <dl class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-10 text-left">
+                    <div class="glass-panel rounded-2xl px-4 py-3.5">
+                        <dt class="text-[11px] uppercase tracking-wider text-slate-400">Paket Mulai</dt>
+                        <dd class="text-lg font-bold text-white mt-0.5">Rp 750 rb</dd>
+                    </div>
+                    <div class="glass-panel rounded-2xl px-4 py-3.5">
+                        <dt class="text-[11px] uppercase tracking-wider text-slate-400">Fase Milestone</dt>
+                        <dd class="text-lg font-bold text-white mt-0.5">5 fase</dd>
+                    </div>
+                    <div class="glass-panel rounded-2xl px-4 py-3.5">
+                        <dt class="text-[11px] uppercase tracking-wider text-slate-400">Pembayaran</dt>
+                        <dd class="text-lg font-bold text-white mt-0.5">DP 50%</dd>
+                    </div>
+                    <div class="glass-panel rounded-2xl px-4 py-3.5">
+                        <dt class="text-[11px] uppercase tracking-wider text-slate-400">Kredensial</dt>
+                        <dd class="text-lg font-bold text-white mt-0.5">AES-256</dd>
+                    </div>
+                </dl>
             </div>
         </div>
-    </header>
+    </section>
 
-    <!-- Main Content -->
-    <main class="flex-grow">
-        
-        
-        
-        <div class="relative overflow-hidden pt-12 pb-20">
-    <!-- Hero Section -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto space-y-6">
-            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-300 text-xs font-semibold backdrop-blur-md">
-                <span class="w-2 h-2 rounded-full bg-brand-400 animate-pulse"></span>
-                <span>ISO/IEC/IEEE 29148 Standard Compliant Platform</span>
-            </div>
-
-            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
-                Transformasi Digital Bisnis Anda dengan <span class="bg-gradient-to-r from-brand-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">Website Kelas Industri</span>
-            </h1>
-
-            <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
-                Platform agensi pembuatan website modern dengan alur kerja transparan 5 fase milestone, split invoice (DP 50% & Pelunasan), staging review interaktif, serta penyerahan kredensial aman terenkripsi AES-256.
-            </p>
-
-            <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
-                <a href="#kalkulator" class="px-7 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold text-sm shadow-xl shadow-brand-500/25 transition-all flex items-center gap-2">
-                    <ion-icon name="calculator-outline" class="text-lg"></ion-icon>
-                    <span>Kalkulator Estimasi Biaya</span>
-                </a>
-                <a href="https://ghani-jasa-secsion.sahir.my.id/login" class="px-6 py-3.5 rounded-xl glass-panel hover:bg-white/10 text-slate-200 font-semibold text-sm transition-all flex items-center gap-2 border border-white/10">
-                    <ion-icon name="key-outline" class="text-lg text-brand-400"></ion-icon>
-                    <span>Demo 5 Akun Multi-Role</span>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- 5 Fase Workflow Diagram -->
-    <div id="alur-kerja" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24">
+    <!-- ===================== KATALOG PAKET ===================== -->
+    <section id="katalog" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-20">
         <div class="text-center mb-12">
-            <h2 class="text-xs font-bold uppercase tracking-wider text-brand-400">Transparansi Proyek</h2>
-            <p class="text-2xl sm:text-3xl font-bold text-white mt-1">Alur Kerja 5 Milestone Terstandarisasi</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
-            <!-- Phase 1 -->
-            <div class="glass-panel p-5 rounded-2xl relative border-brand-500/20 group hover:border-brand-500/50 transition-all">
-                <div class="w-10 h-10 rounded-xl bg-brand-500/20 text-brand-400 flex items-center justify-center font-bold text-sm mb-4 border border-brand-500/30">01</div>
-                <h3 class="text-base font-bold text-white mb-2">Brief & Sitemap</h3>
-                <p class="text-xs text-slate-400 leading-relaxed">Klien input brief, aset logo, palet warna, dan referensi setelah DP 50% terverifikasi.</p>
-            </div>
-
-            <!-- Phase 2 -->
-            <div class="glass-panel p-5 rounded-2xl relative border-brand-500/20 group hover:border-brand-500/50 transition-all">
-                <div class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-sm mb-4 border border-indigo-500/30">02</div>
-                <h3 class="text-base font-bold text-white mb-2">UI/UX Wireframe</h3>
-                <p class="text-xs text-slate-400 leading-relaxed">Perancangan tata letak antarmuka, prototype interaktif Figma, dan persetujuan klien.</p>
-            </div>
-
-            <!-- Phase 3 -->
-            <div class="glass-panel p-5 rounded-2xl relative border-brand-500/20 group hover:border-brand-500/50 transition-all">
-                <div class="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold text-sm mb-4 border border-purple-500/30">03</div>
-                <h3 class="text-base font-bold text-white mb-2">Coding & Slicing</h3>
-                <p class="text-xs text-slate-400 leading-relaxed">Pengembangan kode responsif Tailwind/Laravel, database, dan logika fungsionalitas sistem.</p>
-            </div>
-
-            <!-- Phase 4 -->
-            <div class="glass-panel p-5 rounded-2xl relative border-brand-500/20 group hover:border-brand-500/50 transition-all">
-                <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-sm mb-4 border border-emerald-500/30">04</div>
-                <h3 class="text-base font-bold text-white mb-2">Staging & Evaluasi</h3>
-                <p class="text-xs text-slate-400 leading-relaxed">Peninjauan langsung pada server staging, pengujian fitur, dan pengajuan tiket revisi terukur.</p>
-            </div>
-
-            <!-- Phase 5 -->
-            <div class="glass-panel p-5 rounded-2xl relative border-brand-500/20 group hover:border-brand-500/50 transition-all">
-                <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-sm mb-4 border border-amber-500/30">05</div>
-                <h3 class="text-base font-bold text-white mb-2">Pelunasan & Handover</h3>
-                <p class="text-xs text-slate-400 leading-relaxed">Pelunasan Termin 2, auto-unlock Vault Kredensial AES-256, penerbitan BAST resmi.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Katalog Layanan -->
-    <div id="katalog" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24">
-        <div class="text-center mb-12">
-            <h2 class="text-xs font-bold uppercase tracking-wider text-brand-400">Pilihan Paket</h2>
-            <p class="text-2xl sm:text-3xl font-bold text-white mt-1">Paket Pembuatan Website Siap Pakai</p>
+            <h2 class="text-xs font-bold uppercase tracking-[0.18em] text-brand-400">Pilihan Paket</h2>
+            <p class="text-2xl sm:text-3xl font-bold text-white mt-1.5">Paket Pembuatan Website Siap Pakai</p>
+            <p class="text-sm text-slate-400 mt-3 max-w-2xl mx-auto">Harga transparan, sudah termasuk desain, pengembangan, dan pendampingan. Pilih paket lalu sesuaikan add-on di kalkulator.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    </div>
-    </div>
 
-    <!-- Interactive Pricing & Quotation Calculator (FR-EST-01, FR-EST-02) -->
-    <div id="kalkulator" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-24">
-        <div class="glass-panel rounded-3xl p-6 sm:p-10 border border-brand-500/30 relative shadow-2xl">
-            <div class="text-center max-w-xl mx-auto mb-8">
-                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-500/20 text-brand-300 text-xs font-semibold mb-2">
-                    <ion-icon name="calculator-outline"></ion-icon>
-                    <span>Dynamic Cost Estimator (SRS FR-EST-01)</span>
+            <!-- Paket 1 -->
+            <article class="glass-panel rounded-2xl p-6 flex flex-col justify-between border border-white/10 hover:border-brand-500/50 transition-all relative overflow-hidden">
+                <div class="absolute top-4 right-4 px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/25 text-[10px] font-bold uppercase">Hemat</div>
+                <div>
+                    <h3 class="text-lg font-bold text-white">Landing Page UMKM</h3>
+                    <p class="text-xs text-slate-400 mt-1 min-h-[34px]">Satu halaman promosi yang cepat, modern, dan siap pakai untuk usaha baru.</p>
+                    <div class="mt-4 pt-4 border-t border-white/5">
+                        <span class="text-xs text-slate-400">Mulai dari</span>
+                        <div class="text-2xl font-extrabold text-white">Rp 750.000</div>
+                        <div class="text-[11px] text-brand-300 mt-1 flex items-center gap-1">
+                            <ion-icon name="time-outline"></ion-icon><span>Estimasi 3 Hari Kerja</span>
+                        </div>
+                    </div>
+                    <ul class="mt-6 space-y-2.5 text-xs text-slate-300">
+                        <li class="flex items-start gap-2"><ion-icon name="checkmark-circle" class="text-emerald-400 text-sm shrink-0 mt-0.5"></ion-icon><span>1 halaman beranda interaktif</span></li>
+                        <li class="flex items-start gap-2"><ion-icon name="checkmark-circle" class="text-emerald-400 text-sm shrink-0 mt-0.5"></ion-icon><span>Desain modern &amp; mobile-friendly</span></li>
+                        <li class="flex items-start gap-2"><ion-icon name="checkmark-circle" class="text-emerald-400 text-sm shrink-0 mt-0.5"></ion-icon><span>Formulir kontak ke WhatsApp</span></li>
+                        <li class="flex items-start gap-2"><ion-icon name="checkmark-circle" class="text-emerald-400 text-sm shrink-0 mt-0.5"></ion-icon><span>Domain .com tahun pertama</span></li>
+                        <li class="flex items-start gap-2"><ion-icon name="checkmark-circle" class="text-emerald-400 text-sm shrink-0 mt-0.5"></ion-icon><span>Hosting NVMe SSD kecepatan tinggi</span></li>
+                        <li class="flex items-start gap-2"><ion-icon name="checkmark-circle" class="text-emerald-400 text-sm shrink-0 mt-0.5"></ion-icon><span>Setup Search Console &amp; SEO dasar</span></li>
+                        <li class="flex items-center gap-2 text-indigo-300 font-medium"><ion-icon name="repeat-outline" class="text-indigo-400 text-sm shrink-0"></ion-icon><span>Gratis 2x siklus revisi</span></li>
+                    </ul>
                 </div>
-                <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Kalkulator Estimasi Biaya & Termin</h2>
+                <button type="button" onclick="selectPackage('landing-page-umkm')" class="mt-8 w-full py-2.5 rounded-xl bg-white/5 hover:bg-brand-600 text-slate-200 hover:text-white border border-white/10 hover:border-brand-500 text-xs font-semibold transition-all">Pilih Paket Ini</button>
+            </article>
+
+            <!-- Paket 2 -->
+            <article class="glass-panel rounded-2xl p-6 flex flex-col justify-between border border-brand-500/40 hover:border-brand-400 transition-all relative overflow-hidden ring-1 ring-brand-500/20">
+                <div class="absolute top-4 right-4 px-2.5 py-0.5 rounded-full bg-brand-500/20 text-brand-200 border border-brand-400/30 text-[10px] font-bold uppercase">Populer</div>
+                <div>
+                    <h3 class="text-lg font-bold text-white">Company Profile Pro</h3>
+                    <p class="text-xs text-slate-400 mt-1 min-h-[34px]">Website profil perusahaan profesional dengan CMS agar konten bisa diubah sendiri.</p>
+                    <div class="mt-4 pt-4 border-t border-white/5">
+                        <span class="text-xs text-slate-400">Mulai dari</span>
+                        <div class="text-2xl font-extrabold text-white">Rp 1.500.000</div>
+                        <div class="text-[11px] text-brand-300 mt-1 flex items-center gap-1">
+                            <ion-icon name="time-outline"></ion-icon><span>Estimasi 7 Hari Kerja</span>
+                        </div>
+                    </div>
+                    <ul class="mt-6 space-y-2.5 text-xs text-slate-300">
+                        <li class="flex items-start gap-2"><ion-icon name="checkmark-circle" class="text-emerald-400 text-sm shrink-0 mt-0.5"></ion-icon><span>Hingga 5 halaman dinamis (Home, About, Services, Blog, Contact)</span></li>
+                        <li class="flex items-start gap-2"><ion-icon name="checkmark-circle" class="text-emerald-400 text-sm shrink-0 mt-0.5"></ion-icon><span>CMS admin panel mandiri</span></li>
+                        <li class="flex items-start gap-2"><ion-icon name="checkmark-circle" class="text-emerald-400 text-sm shrink-0 mt-0.5"></ion-icon><span>Desain eksklusif brand identity</span></li>
+                        <li class="flex items-start gap-2"><ion-icon name="checkmark-circle" class="text-emerald-400 text-sm shrink-0 mt-0.5"></ion-icon><span>Google Maps &amp; live chat</span></li>
+                        <li class="flex items-start gap-2"><ion-icon name="checkmark-circle" class="text-emerald-400 text-sm shrink-0 mt-0.5"></ion-icon><span>Email bisnis profesional</span></li>
+                        <li class="flex items-start gap-2"><ion-icon name="checkmark-circle" class="text-emerald-400 text-sm shrink-0 mt-0.5"></ion-icon><span>Optimasi PageSpeed skor 90+</span></li>
+                        <li class="flex items-center gap-2 text-indigo-300 font-medium"><ion-icon name="repeat-outline" class="text-indigo-400 text-sm shrink-0"></ion-icon><span>Gratis 3x siklus revisi</span></li>
+                    </ul>
+                </div>
+                <button type="button" onclick="selectPackage('company-profile-pro')" class="mt-8 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white border border-brand-500 text-xs font-semibold transition-all">Pilih Paket Ini</button>
+            </article>
+
+            <!-- Paket 3 -->
+            <article class="glass-panel rounded-2xl p-6 flex flex-col justify-between border border-white/10 hover:border-brand-500/50 transition-all relative overflow-hidden">
+                <div class="absolute top-4 right-4 px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-200 border border-amber-500/25 text-[10px] font-bold uppercase">Terbaik</div>
+                <div>
+                    <h3 class="text-lg font-bold text-white">E-Commerce Store</h3>
+                    <p class="text-xs text-slate-400 mt-1 min-h-[34px]">Toko online lengkap dengan pembayaran otomatis dan manajemen stok.</p>
+                    <div class="mt-4 pt-4 border-t border-white/5">
+                        <span class="text-xs text-slate-400">Mulai dari</span>
+                        <div class="text-2xl font-extrabold text-white">Rp 2.500.000</div>
+                        <div class="text-[11px] text-brand-300 mt-1 flex items-center gap-1">
+                            <ion-icon name="time-outline"></ion-icon><span>Estimasi 14 Hari Kerja</span>
+                        </div>
+                    </div>
+                    <ul class="mt-6 space-y-2.5 text-xs text-slate-300">
+                        <li class="flex items-start gap-2"><ion-icon name="checkmark-circle" class="text-emerald-400 text-sm shrink-0 mt-0.5"></ion-icon><span>Katalog produk &amp; keranjang tanpa batas</span></li>
+                        <li class="flex items-start gap-2"><ion-icon name="checkmark-circle" class="text-emerald-400 text-sm shrink-0 mt-0.5"></ion-icon><span>Payment gateway (VA, QRIS, e-wallet)</span></li>
+                        <li class="flex items-start gap-2"><ion-icon name="checkmark-circle" class="text-emerald-400 text-sm shrink-0 mt-0.5"></ion-icon><span>Kalkulator ongkir JNE, J&amp;T, SiCepat</span></li>
+                        <li class="flex items-start gap-2"><ion-icon name="checkmark-circle" class="text-emerald-400 text-sm shrink-0 mt-0.5"></ion-icon><span>Manajemen stok &amp; laporan penjualan</span></li>
+                        <li class="flex items-start gap-2"><ion-icon name="checkmark-circle" class="text-emerald-400 text-sm shrink-0 mt-0.5"></ion-icon><span>Notifikasi pesanan via WhatsApp</span></li>
+                        <li class="flex items-start gap-2"><ion-icon name="checkmark-circle" class="text-emerald-400 text-sm shrink-0 mt-0.5"></ion-icon><span>Kupon diskon &amp; flash sale</span></li>
+                        <li class="flex items-center gap-2 text-indigo-300 font-medium"><ion-icon name="repeat-outline" class="text-indigo-400 text-sm shrink-0"></ion-icon><span>Gratis 4x siklus revisi</span></li>
+                    </ul>
+                </div>
+                <button type="button" onclick="selectPackage('e-commerce-store')" class="mt-8 w-full py-2.5 rounded-xl bg-white/5 hover:bg-brand-600 text-slate-200 hover:text-white border border-white/10 hover:border-brand-500 text-xs font-semibold transition-all">Pilih Paket Ini</button>
+            </article>
+
+            <!-- Paket 4 -->
+            <article class="glass-panel rounded-2xl p-6 flex flex-col justify-between border border-white/10 hover:border-brand-500/50 transition-all relative overflow-hidden">
+                <div class="absolute top-4 right-4 px-2.5 py-0.5 rounded-full bg-purple-500/15 text-purple-200 border border-purple-500/25 text-[10px] font-bold uppercase">Enterprise</div>
+                <div>
+                    <h3 class="text-lg font-bold text-white">Custom Web Application</h3>
+                    <p class="text-xs text-slate-400 mt-1 min-h-[34px]">Aplikasi web khusus sesuai proses bisnis, multi-role, dan integrasi sistem.</p>
+                    <div class="mt-4 pt-4 border-t border-white/5">
+                        <span class="text-xs text-slate-400">Mulai dari</span>
+                        <div class="text-2xl font-extrabold text-white">Rp 5.000.000</div>
+                        <div class="text-[11px] text-brand-300 mt-1 flex items-center gap-1">
+                            <ion-icon name="time-outline"></ion-icon><span>Estimasi 21 Hari Kerja</span>
+                        </div>
+                    </div>
+                    <ul class="mt-6 space-y-2.5 text-xs text-slate-300">
+                        <li class="flex items-start gap-2"><ion-icon name="checkmark-circle" class="text-emerald-400 text-sm shrink-0 mt-0.5"></ion-icon><span>Arsitektur backend kustom (Laravel / Node.js)</span></li>
+                        <li class="flex items-start gap-2"><ion-icon name="checkmark-circle" class="text-emerald-400 text-sm shrink-0 mt-0.5"></ion-icon><span>Dashboard multi-role &amp; RBAC</span></li>
+                        <li class="flex items-start gap-2"><ion-icon name="checkmark-circle" class="text-emerald-400 text-sm shrink-0 mt-0.5"></ion-icon><span>Integrasi API pihak ketiga &amp; webhook</span></li>
+                        <li class="flex items-start gap-2"><ion-icon name="checkmark-circle" class="text-emerald-400 text-sm shrink-0 mt-0.5"></ion-icon><span>Database teroptimasi (PostgreSQL / MariaDB)</span></li>
+                        <li class="flex items-start gap-2"><ion-icon name="checkmark-circle" class="text-emerald-400 text-sm shrink-0 mt-0.5"></ion-icon><span>Deployment containerisasi (Docker)</span></li>
+                        <li class="flex items-start gap-2"><ion-icon name="checkmark-circle" class="text-emerald-400 text-sm shrink-0 mt-0.5"></ion-icon><span>Garansi &amp; SLA bug-fix 90 hari</span></li>
+                        <li class="flex items-center gap-2 text-indigo-300 font-medium"><ion-icon name="repeat-outline" class="text-indigo-400 text-sm shrink-0"></ion-icon><span>Gratis 5x siklus revisi</span></li>
+                    </ul>
+                </div>
+                <button type="button" onclick="selectPackage('custom-web-application')" class="mt-8 w-full py-2.5 rounded-xl bg-white/5 hover:bg-brand-600 text-slate-200 hover:text-white border border-white/10 hover:border-brand-500 text-xs font-semibold transition-all">Pilih Paket Ini</button>
+            </article>
+        </div>
+    </section>
+
+    <!-- ===================== KALKULATOR ===================== -->
+    <section id="kalkulator" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 scroll-mt-20">
+        <div class="glass-panel rounded-3xl p-6 sm:p-10 border border-brand-500/30 shadow-2xl">
+            <div class="text-center max-w-xl mx-auto mb-8">
+                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-500/20 text-brand-200 text-xs font-semibold mb-2">
+                    <ion-icon name="calculator-outline"></ion-icon>
+                    <span>Dynamic Cost Estimator</span>
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Kalkulator Estimasi Biaya &amp; Termin</h2>
                 <p class="text-xs sm:text-sm text-slate-300 mt-2">Pilih paket dasar dan add-on kebutuhan proyek Anda. Sistem menghitung subtotal dan split termin DP 50% secara otomatis.</p>
             </div>
 
-            <form action="https://ghani-jasa-secsion.sahir.my.id/checkout" method="GET" id="calcForm" class="space-y-8">
-                <!-- 1. Pilihan Paket Dasar -->
+            <div class="space-y-8">
+                <!-- Paket dasar -->
                 <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-3">1. Pilih Paket Layanan Dasar</label>
+                    <span class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-3">1. Pilih Paket Layanan Dasar</span>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-                                            </div>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="package" value="landing-page-umkm" data-price="750000" data-days="3" checked class="peer sr-only package-radio">
+                            <span class="block p-4 rounded-xl glass-panel border border-white/10 peer-checked:border-brand-500 peer-checked:bg-brand-500/10 peer-focus-visible:ring-2 peer-focus-visible:ring-brand-400 transition-all">
+                                <span class="block font-bold text-sm text-white">Landing Page UMKM</span>
+                                <span class="block text-xs text-brand-300 font-semibold mt-1">Rp 750.000</span>
+                                <span class="block text-[11px] text-slate-400 mt-0.5">3 Hari Kerja</span>
+                            </span>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="package" value="company-profile-pro" data-price="1500000" data-days="7" class="peer sr-only package-radio">
+                            <span class="block p-4 rounded-xl glass-panel border border-white/10 peer-checked:border-brand-500 peer-checked:bg-brand-500/10 peer-focus-visible:ring-2 peer-focus-visible:ring-brand-400 transition-all">
+                                <span class="block font-bold text-sm text-white">Company Profile Pro</span>
+                                <span class="block text-xs text-brand-300 font-semibold mt-1">Rp 1.500.000</span>
+                                <span class="block text-[11px] text-slate-400 mt-0.5">7 Hari Kerja</span>
+                            </span>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="package" value="e-commerce-store" data-price="2500000" data-days="14" class="peer sr-only package-radio">
+                            <span class="block p-4 rounded-xl glass-panel border border-white/10 peer-checked:border-brand-500 peer-checked:bg-brand-500/10 peer-focus-visible:ring-2 peer-focus-visible:ring-brand-400 transition-all">
+                                <span class="block font-bold text-sm text-white">E-Commerce Store</span>
+                                <span class="block text-xs text-brand-300 font-semibold mt-1">Rp 2.500.000</span>
+                                <span class="block text-[11px] text-slate-400 mt-0.5">14 Hari Kerja</span>
+                            </span>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="package" value="custom-web-application" data-price="5000000" data-days="21" class="peer sr-only package-radio">
+                            <span class="block p-4 rounded-xl glass-panel border border-white/10 peer-checked:border-brand-500 peer-checked:bg-brand-500/10 peer-focus-visible:ring-2 peer-focus-visible:ring-brand-400 transition-all">
+                                <span class="block font-bold text-sm text-white">Custom Web App</span>
+                                <span class="block text-xs text-brand-300 font-semibold mt-1">Rp 5.000.000</span>
+                                <span class="block text-[11px] text-slate-400 mt-0.5">21 Hari Kerja</span>
+                            </span>
+                        </label>
+                    </div>
                 </div>
 
-                <!-- 2. Pilihan Add-on Tambahan -->
+                <!-- Add-on -->
                 <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-3">2. Tambahan Fitur & Layanan (Add-ons)</label>
+                    <span class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-3">2. Tambahan Fitur &amp; Layanan (Add-ons)</span>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                                    <label class="cursor-pointer">
-                                <input type="checkbox" name="addons[]" value="addon_domain_com" data-price="165000" data-days="0" class="peer hidden addon-checkbox">
-                                <div class="p-3.5 rounded-xl glass-panel border border-white/10 peer-checked:border-indigo-400 peer-checked:bg-indigo-500/10 transition-all flex items-center justify-between">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-5 h-5 rounded-md border border-white/20 peer-checked:bg-indigo-600 flex items-center justify-center text-white text-xs">
-                                            <ion-icon name="checkmark" class="hidden"></ion-icon>
-                                        </div>
-                                        <div>
-                                            <div class="text-xs font-semibold text-white">Domain .com (1 Tahun)</div>
-                                                                                    </div>
-                                    </div>
-                                    <div class="text-xs font-bold text-indigo-300">+Rp 165.000</div>
-                                </div>
-                            </label>
-                                                    <label class="cursor-pointer">
-                                <input type="checkbox" name="addons[]" value="addon_domain_id" data-price="250000" data-days="1" class="peer hidden addon-checkbox">
-                                <div class="p-3.5 rounded-xl glass-panel border border-white/10 peer-checked:border-indigo-400 peer-checked:bg-indigo-500/10 transition-all flex items-center justify-between">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-5 h-5 rounded-md border border-white/20 peer-checked:bg-indigo-600 flex items-center justify-center text-white text-xs">
-                                            <ion-icon name="checkmark" class="hidden"></ion-icon>
-                                        </div>
-                                        <div>
-                                            <div class="text-xs font-semibold text-white">Domain .id Resmi PANDI (1 Tahun)</div>
-                                                                                            <div class="text-[10px] text-slate-400">+1 Hari Kerja</div>
-                                                                                    </div>
-                                    </div>
-                                    <div class="text-xs font-bold text-indigo-300">+Rp 250.000</div>
-                                </div>
-                            </label>
-                                                    <label class="cursor-pointer">
-                                <input type="checkbox" name="addons[]" value="addon_hosting_nvme" data-price="350000" data-days="0" class="peer hidden addon-checkbox">
-                                <div class="p-3.5 rounded-xl glass-panel border border-white/10 peer-checked:border-indigo-400 peer-checked:bg-indigo-500/10 transition-all flex items-center justify-between">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-5 h-5 rounded-md border border-white/20 peer-checked:bg-indigo-600 flex items-center justify-center text-white text-xs">
-                                            <ion-icon name="checkmark" class="hidden"></ion-icon>
-                                        </div>
-                                        <div>
-                                            <div class="text-xs font-semibold text-white">Upgrade Hosting NVMe SSD 10GB + Cloudflare Pro</div>
-                                                                                    </div>
-                                    </div>
-                                    <div class="text-xs font-bold text-indigo-300">+Rp 350.000</div>
-                                </div>
-                            </label>
-                                                    <label class="cursor-pointer">
-                                <input type="checkbox" name="addons[]" value="addon_payment_gateway" data-price="450000" data-days="2" class="peer hidden addon-checkbox">
-                                <div class="p-3.5 rounded-xl glass-panel border border-white/10 peer-checked:border-indigo-400 peer-checked:bg-indigo-500/10 transition-all flex items-center justify-between">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-5 h-5 rounded-md border border-white/20 peer-checked:bg-indigo-600 flex items-center justify-center text-white text-xs">
-                                            <ion-icon name="checkmark" class="hidden"></ion-icon>
-                                        </div>
-                                        <div>
-                                            <div class="text-xs font-semibold text-white">Integrasi Payment Gateway Otomatis (VA &amp; QRIS)</div>
-                                                                                            <div class="text-[10px] text-slate-400">+2 Hari Kerja</div>
-                                                                                    </div>
-                                    </div>
-                                    <div class="text-xs font-bold text-indigo-300">+Rp 450.000</div>
-                                </div>
-                            </label>
-                                                    <label class="cursor-pointer">
-                                <input type="checkbox" name="addons[]" value="addon_multilingual" data-price="500000" data-days="2" class="peer hidden addon-checkbox">
-                                <div class="p-3.5 rounded-xl glass-panel border border-white/10 peer-checked:border-indigo-400 peer-checked:bg-indigo-500/10 transition-all flex items-center justify-between">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-5 h-5 rounded-md border border-white/20 peer-checked:bg-indigo-600 flex items-center justify-center text-white text-xs">
-                                            <ion-icon name="checkmark" class="hidden"></ion-icon>
-                                        </div>
-                                        <div>
-                                            <div class="text-xs font-semibold text-white">Fitur Multi-Bahasa (Bilingual ID &amp; EN)</div>
-                                                                                            <div class="text-[10px] text-slate-400">+2 Hari Kerja</div>
-                                                                                    </div>
-                                    </div>
-                                    <div class="text-xs font-bold text-indigo-300">+Rp 500.000</div>
-                                </div>
-                            </label>
-                                                    <label class="cursor-pointer">
-                                <input type="checkbox" name="addons[]" value="addon_content_upload" data-price="350000" data-days="2" class="peer hidden addon-checkbox">
-                                <div class="p-3.5 rounded-xl glass-panel border border-white/10 peer-checked:border-indigo-400 peer-checked:bg-indigo-500/10 transition-all flex items-center justify-between">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-5 h-5 rounded-md border border-white/20 peer-checked:bg-indigo-600 flex items-center justify-center text-white text-xs">
-                                            <ion-icon name="checkmark" class="hidden"></ion-icon>
-                                        </div>
-                                        <div>
-                                            <div class="text-xs font-semibold text-white">Input Produk / Konten Artikel Massal (Hingga 50 Item)</div>
-                                                                                            <div class="text-[10px] text-slate-400">+2 Hari Kerja</div>
-                                                                                    </div>
-                                    </div>
-                                    <div class="text-xs font-bold text-indigo-300">+Rp 350.000</div>
-                                </div>
-                            </label>
-                                                    <label class="cursor-pointer">
-                                <input type="checkbox" name="addons[]" value="addon_seo_setup" data-price="400000" data-days="2" class="peer hidden addon-checkbox">
-                                <div class="p-3.5 rounded-xl glass-panel border border-white/10 peer-checked:border-indigo-400 peer-checked:bg-indigo-500/10 transition-all flex items-center justify-between">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-5 h-5 rounded-md border border-white/20 peer-checked:bg-indigo-600 flex items-center justify-center text-white text-xs">
-                                            <ion-icon name="checkmark" class="hidden"></ion-icon>
-                                        </div>
-                                        <div>
-                                            <div class="text-xs font-semibold text-white">Advanced Technical SEO &amp; Schema Markup</div>
-                                                                                            <div class="text-[10px] text-slate-400">+2 Hari Kerja</div>
-                                                                                    </div>
-                                    </div>
-                                    <div class="text-xs font-bold text-indigo-300">+Rp 400.000</div>
-                                </div>
-                            </label>
-                                            </div>
+                        <label class="cursor-pointer">
+                            <input type="checkbox" name="addons[]" value="addon_domain_com" data-price="165000" data-days="0" class="peer sr-only addon-checkbox">
+                            <span class="block p-3.5 rounded-xl glass-panel border border-white/10 peer-checked:border-indigo-400 peer-checked:bg-indigo-500/10 transition-all flex items-center justify-between gap-3">
+                                <span class="flex items-center gap-3">
+                                    <span class="w-5 h-5 rounded-md border border-white/20 peer-checked:bg-indigo-600 flex items-center justify-center text-white text-xs"><ion-icon name="checkmark" class="text-sm"></ion-icon></span>
+                                    <span class="text-xs font-semibold text-white">Domain .com (1 Tahun)</span>
+                                </span>
+                                <span class="text-xs font-bold text-indigo-300 whitespace-nowrap">+Rp 165.000</span>
+                            </span>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="checkbox" name="addons[]" value="addon_domain_id" data-price="250000" data-days="1" class="peer sr-only addon-checkbox">
+                            <span class="block p-3.5 rounded-xl glass-panel border border-white/10 peer-checked:border-indigo-400 peer-checked:bg-indigo-500/10 transition-all flex items-center justify-between gap-3">
+                                <span class="flex items-center gap-3">
+                                    <span class="w-5 h-5 rounded-md border border-white/20 flex items-center justify-center text-white text-xs"><ion-icon name="checkmark" class="text-sm"></ion-icon></span>
+                                    <span>
+                                        <span class="block text-xs font-semibold text-white">Domain .id Resmi PANDI (1 Tahun)</span>
+                                        <span class="block text-[10px] text-slate-400">+1 Hari Kerja</span>
+                                    </span>
+                                </span>
+                                <span class="text-xs font-bold text-indigo-300 whitespace-nowrap">+Rp 250.000</span>
+                            </span>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="checkbox" name="addons[]" value="addon_hosting_nvme" data-price="350000" data-days="0" class="peer sr-only addon-checkbox">
+                            <span class="block p-3.5 rounded-xl glass-panel border border-white/10 peer-checked:border-indigo-400 peer-checked:bg-indigo-500/10 transition-all flex items-center justify-between gap-3">
+                                <span class="flex items-center gap-3">
+                                    <span class="w-5 h-5 rounded-md border border-white/20 flex items-center justify-center text-white text-xs"><ion-icon name="checkmark" class="text-sm"></ion-icon></span>
+                                    <span class="text-xs font-semibold text-white">Upgrade Hosting NVMe SSD 10GB + Cloudflare Pro</span>
+                                </span>
+                                <span class="text-xs font-bold text-indigo-300 whitespace-nowrap">+Rp 350.000</span>
+                            </span>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="checkbox" name="addons[]" value="addon_payment_gateway" data-price="450000" data-days="2" class="peer sr-only addon-checkbox">
+                            <span class="block p-3.5 rounded-xl glass-panel border border-white/10 peer-checked:border-indigo-400 peer-checked:bg-indigo-500/10 transition-all flex items-center justify-between gap-3">
+                                <span class="flex items-center gap-3">
+                                    <span class="w-5 h-5 rounded-md border border-white/20 flex items-center justify-center text-white text-xs"><ion-icon name="checkmark" class="text-sm"></ion-icon></span>
+                                    <span>
+                                        <span class="block text-xs font-semibold text-white">Integrasi Payment Gateway Otomatis</span>
+                                        <span class="block text-[10px] text-slate-400">VA &amp; QRIS • +2 Hari Kerja</span>
+                                    </span>
+                                </span>
+                                <span class="text-xs font-bold text-indigo-300 whitespace-nowrap">+Rp 450.000</span>
+                            </span>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="checkbox" name="addons[]" value="addon_multilingual" data-price="500000" data-days="2" class="peer sr-only addon-checkbox">
+                            <span class="block p-3.5 rounded-xl glass-panel border border-white/10 peer-checked:border-indigo-400 peer-checked:bg-indigo-500/10 transition-all flex items-center justify-between gap-3">
+                                <span class="flex items-center gap-3">
+                                    <span class="w-5 h-5 rounded-md border border-white/20 flex items-center justify-center text-white text-xs"><ion-icon name="checkmark" class="text-sm"></ion-icon></span>
+                                    <span>
+                                        <span class="block text-xs font-semibold text-white">Fitur Multi-Bahasa (ID &amp; EN)</span>
+                                        <span class="block text-[10px] text-slate-400">+2 Hari Kerja</span>
+                                    </span>
+                                </span>
+                                <span class="text-xs font-bold text-indigo-300 whitespace-nowrap">+Rp 500.000</span>
+                            </span>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="checkbox" name="addons[]" value="addon_content_upload" data-price="350000" data-days="2" class="peer sr-only addon-checkbox">
+                            <span class="block p-3.5 rounded-xl glass-panel border border-white/10 peer-checked:border-indigo-400 peer-checked:bg-indigo-500/10 transition-all flex items-center justify-between gap-3">
+                                <span class="flex items-center gap-3">
+                                    <span class="w-5 h-5 rounded-md border border-white/20 flex items-center justify-center text-white text-xs"><ion-icon name="checkmark" class="text-sm"></ion-icon></span>
+                                    <span>
+                                        <span class="block text-xs font-semibold text-white">Input Produk / Artikel Massal (50 item)</span>
+                                        <span class="block text-[10px] text-slate-400">+2 Hari Kerja</span>
+                                    </span>
+                                </span>
+                                <span class="text-xs font-bold text-indigo-300 whitespace-nowrap">+Rp 350.000</span>
+                            </span>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="checkbox" name="addons[]" value="addon_seo_setup" data-price="400000" data-days="2" class="peer sr-only addon-checkbox">
+                            <span class="block p-3.5 rounded-xl glass-panel border border-white/10 peer-checked:border-indigo-400 peer-checked:bg-indigo-500/10 transition-all flex items-center justify-between gap-3">
+                                <span class="flex items-center gap-3">
+                                    <span class="w-5 h-5 rounded-md border border-white/20 flex items-center justify-center text-white text-xs"><ion-icon name="checkmark" class="text-sm"></ion-icon></span>
+                                    <span>
+                                        <span class="block text-xs font-semibold text-white">Advanced Technical SEO &amp; Schema Markup</span>
+                                        <span class="block text-[10px] text-slate-400">+2 Hari Kerja</span>
+                                    </span>
+                                </span>
+                                <span class="text-xs font-bold text-indigo-300 whitespace-nowrap">+Rp 400.000</span>
+                            </span>
+                        </label>
+                    </div>
                 </div>
 
-                <!-- 3. Rangkuman Kalkulasi Real-time -->
+                <!-- Ringkasan -->
                 <div class="p-6 rounded-2xl bg-slate-900/80 border border-white/10">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left divide-y md:divide-y-0 md:divide-x divide-white/10">
-                        <!-- Total Biaya Proyek -->
                         <div class="pt-4 md:pt-0">
                             <span class="text-xs text-slate-400">Total Biaya Investasi</span>
                             <div class="text-2xl sm:text-3xl font-extrabold text-white mt-1" id="displayTotal">Rp 0</div>
                             <div class="text-xs text-slate-400 mt-1" id="displayDays">Estimasi Selesai: 0 Hari</div>
                         </div>
-
-                        <!-- Termin 1 (DP 50%) -->
                         <div class="pt-4 md:pt-0 md:pl-6">
                             <div class="inline-flex items-center gap-1 text-xs text-emerald-400 font-semibold mb-1">
-                                <ion-icon name="wallet-outline"></ion-icon>
-                                <span>Termin 1 (DP 50%)</span>
+                                <ion-icon name="wallet-outline"></ion-icon><span>Termin 1 (DP 50%)</span>
                             </div>
                             <div class="text-xl sm:text-2xl font-bold text-emerald-300" id="displayDp">Rp 0</div>
-                            <div class="text-[11px] text-slate-400 mt-1">Dibayar untuk mulai pengerjaan & pengisian brief</div>
+                            <div class="text-[11px] text-slate-400 mt-1">Dibayar untuk mulai pengerjaan &amp; pengisian brief</div>
                         </div>
-
-                        <!-- Termin 2 (Pelunasan 50%) -->
                         <div class="pt-4 md:pt-0 md:pl-6">
                             <div class="inline-flex items-center gap-1 text-xs text-amber-400 font-semibold mb-1">
-                                <ion-icon name="shield-checkmark-outline"></ion-icon>
-                                <span>Termin 2 (Pelunasan 50%)</span>
+                                <ion-icon name="shield-checkmark-outline"></ion-icon><span>Termin 2 (Pelunasan 50%)</span>
                             </div>
                             <div class="text-xl sm:text-2xl font-bold text-amber-300" id="displaySettlement">Rp 0</div>
-                            <div class="text-[11px] text-slate-400 mt-1">Dibayar saat evaluasi staging lolos & unlock kredensial</div>
+                            <div class="text-[11px] text-slate-400 mt-1">Dibayar saat staging lolos &amp; kredensial dibuka</div>
                         </div>
                     </div>
 
                     <div class="mt-6 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
                         <div class="text-xs text-slate-400 flex items-center gap-2">
-                            <ion-icon name="lock-closed-outline" class="text-brand-400 text-base"></ion-icon>
-                            <span>Tanpa biaya tersembunyi &bull; Invoice resmi diterbitkan otomatis</span>
+                            <ion-icon name="lock-closed-outline" class="text-brand-300 text-base"></ion-icon>
+                            <span>Tanpa biaya tersembunyi &bull; invoice resmi otomatis</span>
                         </div>
-                        <button type="submit" class="w-full sm:w-auto px-8 py-3 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-bold text-sm shadow-xl shadow-brand-500/25 transition-all flex items-center justify-center gap-2">
-                            <span>Lanjut ke Formulir Pemesanan</span>
-                            <ion-icon name="arrow-forward"></ion-icon>
-                        </button>
+                        <div class="flex flex-col sm:flex-row gap-2.5 w-full sm:w-auto">
+                            <a href="demo/" id="btnDemoCheckout" class="w-full sm:w-auto text-center px-6 py-3 rounded-xl glass-panel hover:bg-white/10 text-slate-200 font-semibold text-sm border border-white/10 transition-all">
+                                Coba di Demo
+                            </a>
+                            <a href="#kontak" class="w-full sm:w-auto text-center px-7 py-3 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-bold text-sm shadow-xl shadow-brand-500/25 transition-all">
+                                Konsultasi &amp; Pesan
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== ALUR KERJA ===================== -->
+    <section id="alur-kerja" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 scroll-mt-20">
+        <div class="text-center mb-12">
+            <h2 class="text-xs font-bold uppercase tracking-[0.18em] text-brand-400">Transparansi Proyek</h2>
+            <p class="text-2xl sm:text-3xl font-bold text-white mt-1.5">Alur Kerja 5 Milestone Terstandarisasi</p>
+            <p class="text-sm text-slate-400 mt-3 max-w-2xl mx-auto">Setiap fase punya kriteria selesai yang jelas dan tanda tangan digital, sehingga tidak ada pekerjaan yang “menggantung”.</p>
+        </div>
+
+        <ol class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            <li class="glass-panel p-5 rounded-2xl border-white/10 hover:border-brand-500/40 transition-all">
+                <div class="w-10 h-10 rounded-xl bg-brand-500/20 text-brand-300 flex items-center justify-center font-bold text-sm mb-4 border border-brand-500/30">01</div>
+                <h3 class="text-base font-bold text-white mb-2">Brief &amp; Sitemap</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">Klien mengisi brief, aset logo, palet warna, dan referensi setelah DP 50% terverifikasi.</p>
+            </li>
+            <li class="glass-panel p-5 rounded-2xl border-white/10 hover:border-brand-500/40 transition-all">
+                <div class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-300 flex items-center justify-center font-bold text-sm mb-4 border border-indigo-500/30">02</div>
+                <h3 class="text-base font-bold text-white mb-2">UI/UX Wireframe</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">Perancangan tata letak antarmuka, prototipe interaktif, dan persetujuan klien.</p>
+            </li>
+            <li class="glass-panel p-5 rounded-2xl border-white/10 hover:border-brand-500/40 transition-all">
+                <div class="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-300 flex items-center justify-center font-bold text-sm mb-4 border border-purple-500/30">03</div>
+                <h3 class="text-base font-bold text-white mb-2">Coding &amp; Slicing</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">Pengembangan kode responsif, database, dan logika fungsionalitas sistem.</p>
+            </li>
+            <li class="glass-panel p-5 rounded-2xl border-white/10 hover:border-brand-500/40 transition-all">
+                <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-300 flex items-center justify-center font-bold text-sm mb-4 border border-emerald-500/30">04</div>
+                <h3 class="text-base font-bold text-white mb-2">Staging &amp; Evaluasi</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">Peninjauan di server staging, pengujian fitur, dan tiket revisi terukur.</p>
+            </li>
+            <li class="glass-panel p-5 rounded-2xl border-white/10 hover:border-brand-500/40 transition-all">
+                <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-300 flex items-center justify-center font-bold text-sm mb-4 border border-amber-500/30">05</div>
+                <h3 class="text-base font-bold text-white mb-2">Pelunasan &amp; Handover</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">Pelunasan Termin 2, unlock vault kredensial AES-256, dan penerbitan BAST resmi.</p>
+            </li>
+        </ol>
+    </section>
+
+    <!-- ===================== DEMO & KEAMANAN ===================== -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="glass-panel rounded-3xl p-7 sm:p-9 border border-brand-500/25">
+                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-500/20 text-brand-200 text-xs font-semibold mb-4">
+                    <ion-icon name="flask-outline"></ion-icon><span>Demo tanpa server</span>
+                </div>
+                <h2 class="text-xl sm:text-2xl font-bold text-white">Coba seluruh alur kerja langsung di browser</h2>
+                <p class="text-sm text-slate-300 mt-3 leading-relaxed">
+                    Demo interaktif menjalankan simulasi basis data di perangkat Anda: login 5 peran,
+                    kalkulator, invoice DP, sign-off milestone, vault AES-256, sampai cetak BAST.
+                    Tidak perlu PHP, Docker, atau database — cukup buka tautannya.
+                </p>
+                <a href="demo/" class="mt-6 inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold text-sm shadow-lg shadow-brand-500/25 transition-all">
+                    <ion-icon name="play-circle-outline" class="text-lg"></ion-icon>
+                    <span>Buka Demo Interaktif</span>
+                </a>
+                <div class="mt-6 grid grid-cols-2 gap-2 text-[11px] text-slate-400">
+                    <div class="flex items-center gap-1.5"><ion-icon name="checkmark-circle" class="text-emerald-400"></ion-icon>5 peran pengguna</div>
+                    <div class="flex items-center gap-1.5"><ion-icon name="checkmark-circle" class="text-emerald-400"></ion-icon>Invoice &amp; termin</div>
+                    <div class="flex items-center gap-1.5"><ion-icon name="checkmark-circle" class="text-emerald-400"></ion-icon>Brankas kredensial</div>
+                    <div class="flex items-center gap-1.5"><ion-icon name="checkmark-circle" class="text-emerald-400"></ion-icon>BAST siap cetak</div>
+                </div>
+            </div>
+
+            <div class="glass-panel rounded-3xl p-7 sm:p-9 border border-white/10">
+                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-300 text-xs font-semibold mb-4">
+                    <ion-icon name="server-outline"></ion-icon><span>Arsitektur tahan lama</span>
+                </div>
+                <h2 class="text-xl sm:text-2xl font-bold text-white">Kenapa situs ini tetap hidup bertahun-tahun?</h2>
+                <ul class="text-sm text-slate-300 mt-4 space-y-3">
+                    <li class="flex items-start gap-3">
+                        <ion-icon name="cloud-done-outline" class="text-emerald-400 text-lg shrink-0 mt-0.5"></ion-icon>
+                        <span><strong class="text-white">Dihosting di GitHub Pages</strong> — CDN global, HTTPS otomatis, tanpa komputer yang harus menyala.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <ion-icon name="cube-outline" class="text-emerald-400 text-lg shrink-0 mt-0.5"></ion-icon>
+                        <span><strong class="text-white">Tanpa Docker &amp; tanpa database</strong> — halaman statis plus demo di browser, jadi tidak ada layanan yang bisa mati.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <ion-icon name="download-outline" class="text-emerald-400 text-lg shrink-0 mt-0.5"></ion-icon>
+                        <span><strong class="text-white">Mandiri aset</strong> — font, ikon, dan CSS disimpan di repo, tidak bergantung pada CDN pihak ketiga.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <ion-icon name="git-branch-outline" class="text-emerald-400 text-lg shrink-0 mt-0.5"></ion-icon>
+                        <span><strong class="text-white">Kode di GitHub</strong> — bisa dipulihkan atau dipindah ke hosting lain kapan saja.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== FAQ ===================== -->
+    <section id="faq" class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 scroll-mt-20">
+        <div class="text-center mb-10">
+            <h2 class="text-xs font-bold uppercase tracking-[0.18em] text-brand-400">Pertanyaan Umum</h2>
+            <p class="text-2xl sm:text-3xl font-bold text-white mt-1.5">Hal yang sering ditanyakan</p>
+        </div>
+
+        <div class="space-y-3">
+            <details class="glass-panel rounded-2xl p-5 group">
+                <summary class="cursor-pointer list-none flex items-center justify-between gap-4 text-sm font-semibold text-white">
+                    <span>Apakah situs ini benar-benar bisa diakses di mana saja?</span>
+                    <ion-icon name="add-outline" class="text-brand-300 text-lg group-open:rotate-45 transition-transform"></ion-icon>
+                </summary>
+                <p class="text-sm text-slate-300 leading-relaxed mt-3">Ya. Situs ini dilayani langsung oleh jaringan CDN GitHub Pages, sehingga bisa dibuka dari HP, laptop, atau jaringan mana pun selama ada internet — tidak bergantung pada komputer yang menyala.</p>
+            </details>
+            <details class="glass-panel rounded-2xl p-5 group">
+                <summary class="cursor-pointer list-none flex items-center justify-between gap-4 text-sm font-semibold text-white">
+                    <span>Apakah butuh Docker atau instalasi PHP?</span>
+                    <ion-icon name="add-outline" class="text-brand-300 text-lg group-open:rotate-45 transition-transform"></ion-icon>
+                </summary>
+                <p class="text-sm text-slate-300 leading-relaxed mt-3">Tidak. Versi publik ini statis dan demo-nya berjalan di browser. Kode Laravel lengkap tetap tersedia di repositori untuk dijalankan lokal bila dibutuhkan untuk penilaian akademik.</p>
+            </details>
+            <details class="glass-panel rounded-2xl p-5 group">
+                <summary class="cursor-pointer list-none flex items-center justify-between gap-4 text-sm font-semibold text-white">
+                    <span>Bagaimana kalau saya ingin memesan website sungguhan?</span>
+                    <ion-icon name="add-outline" class="text-brand-300 text-lg group-open:rotate-45 transition-transform"></ion-icon>
+                </summary>
+                <p class="text-sm text-slate-300 leading-relaxed mt-3">Gunakan kalkulator untuk melihat estimasi, lalu hubungi kontak yang tersedia di bawah. Alur pemesanan, brief, invoice, revisi, sampai BAST mengikuti 5 fase yang sama seperti di demo.</p>
+            </details>
+            <details class="glass-panel rounded-2xl p-5 group">
+                <summary class="cursor-pointer list-none flex items-center justify-between gap-4 text-sm font-semibold text-white">
+                    <span>Bagaimana keamanan kredensial yang diserahkan?</span>
+                    <ion-icon name="add-outline" class="text-brand-300 text-lg group-open:rotate-45 transition-transform"></ion-icon>
+                </summary>
+                <p class="text-sm text-slate-300 leading-relaxed mt-3">Kredensial disimpan terenkripsi AES-256 dan hanya dibuka otomatis setelah Termin 2 lunas (gated release). Pada demo, proses enkripsi–dekripsi disimulasikan agar bisa diperagakan tanpa risiko.</p>
+            </details>
+        </div>
+    </section>
+
+    <!-- ===================== KONTAK / CTA ===================== -->
+    <section id="kontak" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 scroll-mt-20">
+        <div class="glass-panel rounded-3xl p-7 sm:p-10 border border-brand-500/25 text-center">
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Siap mulai proyek Anda?</h2>
+            <p class="text-sm text-slate-300 mt-3 max-w-xl mx-auto">Hitung estimasi biaya dalam 30 detik, atau coba demo interaktif untuk melihat seluruh proses dari brief hingga BAST.</p>
+            <div class="flex flex-wrap items-center justify-center gap-3 mt-7">
+                <a href="#kalkulator" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-bold text-sm shadow-xl shadow-brand-500/25 transition-all">
+                    <ion-icon name="calculator-outline" class="text-lg"></ion-icon><span>Hitung Estimasi</span>
+                </a>
+                <a href="demo/" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl glass-panel hover:bg-white/10 text-slate-200 font-semibold text-sm border border-white/10 transition-all">
+                    <ion-icon name="play-circle-outline" class="text-lg text-brand-300"></ion-icon><span>Demo Interaktif</span>
+                </a>
+                <a href="https://github.com/ghanisyifanur-analisis/ghani-jasa-secsion" rel="noopener" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl glass-panel hover:bg-white/10 text-slate-200 font-semibold text-sm border border-white/10 transition-all">
+                    <ion-icon name="logo-github" class="text-lg"></ion-icon><span>Repositori Kode</span>
+                </a>
+            </div>
+            <p class="text-[11px] text-slate-500 mt-6">Platform WebCraft Agency • Proyek Web Programming • Standar ISO/IEC/IEEE 29148:2018</p>
+        </div>
+    </section>
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="mt-16 border-t border-white/5 py-8 text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>WebCraft Agency Platform &bull; Academic Production Engine</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <a href="demo/" class="hover:text-slate-300 transition-colors">Demo</a>
+            <a href="#faq" class="hover:text-slate-300 transition-colors">FAQ</a>
+            <a href="https://github.com/ghanisyifanur-analisis/ghani-jasa-secsion" rel="noopener" class="hover:text-slate-300 transition-colors">GitHub</a>
+            <span>&copy; <span id="year">2026</span> MaoneArt</span>
+        </div>
+    </div>
+</footer>
+
+<!-- ===================== MODAL (MaoneArt Glassmorphism) ===================== -->
+<div id="maoneModalOverlay" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-md flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div id="maoneModalBox" class="w-full max-w-md rounded-2xl glass-panel p-6 transform scale-95 transition-all duration-300 border border-white/10 shadow-2xl relative">
+        <div class="flex items-start gap-4">
+            <div id="modalIconContainer" class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl shrink-0 bg-brand-500/20 text-brand-300 border border-brand-500/30">
+                <ion-icon id="modalIcon" name="information-circle"></ion-icon>
+            </div>
+            <div class="flex-grow">
+                <h3 id="modalTitle" class="text-lg font-bold text-white mb-1">Konfirmasi</h3>
+                <p id="modalMessage" class="text-sm text-slate-300 leading-relaxed">Pesan modal</p>
+            </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3 w-full mt-6">
+            <button type="button" id="modalBtnCancel" class="w-full py-2.5 px-4 rounded-xl text-sm font-semibold bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10 transition-all">Tutup</button>
+            <button type="button" id="modalBtnConfirm" class="w-full py-2.5 px-4 rounded-xl text-sm font-semibold bg-brand-600 hover:bg-brand-500 text-white shadow-lg shadow-brand-500/25 transition-all">Lanjutkan</button>
         </div>
     </div>
 </div>
-    </main>
 
-    <!-- Footer -->
-    <footer class="mt-16 border-t border-white/5 py-8 text-center text-xs text-slate-500">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span>WebCraft Agency Platform &bull; Academic Production Engine</span>
-            </div>
-            <div>
-                &copy; 2026 MaoneArt &bull; Web Programming Project
-            </div>
-        </div>
-    </footer>
+<script>
+(function () {
+    'use strict';
 
-    <!-- MaoneArt Glassmorphism Modal System (Rule 5 Compliant: 100% Symmetrical 2-Column Grid) -->
-    <div id="maoneModalOverlay" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-md flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
-        <div id="maoneModalBox" class="w-full max-w-md rounded-2xl glass-panel p-6 transform scale-95 transition-all duration-300 border border-white/10 shadow-2xl relative text-left">
-            <div class="flex items-start gap-4">
-                <div id="modalIconContainer" class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0 bg-brand-500/20 text-brand-400 border border-brand-500/30">
-                    <ion-icon id="modalIcon" name="information-circle"></ion-icon>
-                </div>
-                <div class="flex-grow">
-                    <h3 id="modalTitle" class="text-lg font-bold text-white mb-1">Konfirmasi</h3>
-                    <p id="modalMessage" class="text-sm text-slate-300 leading-relaxed">Pesan modal</p>
-                </div>
-            </div>
+    /* ------------------ Format & kalkulasi ------------------ */
+    const rupiah = (n) => 'Rp ' + Math.round(n).toLocaleString('id-ID');
 
-            <!-- Symmetrical 2-Column Action Buttons (w-full, grid grid-cols-2 gap-3) -->
-            <div class="grid grid-cols-2 gap-3 w-full mt-6">
-                <button type="button" id="modalBtnCancel" onclick="closeMaoneModal()" class="w-full py-2.5 px-4 rounded-xl text-sm font-semibold bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10 transition-all text-center flex items-center justify-center">
-                    Batal
-                </button>
-                <button type="button" id="modalBtnConfirm" class="w-full py-2.5 px-4 rounded-xl text-sm font-semibold bg-brand-600 hover:bg-brand-500 text-white shadow-lg shadow-brand-500/25 transition-all text-center flex items-center justify-center">
-                    Lanjutkan
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // MaoneArt Glassmorphism Modal Implementation
-        let modalConfirmCallback = null;
-
-        function showConfirmModal(title, message, onConfirm, options = {}) {
-            const overlay = document.getElementById('maoneModalOverlay');
-            const box = document.getElementById('maoneModalBox');
-            const modalTitle = document.getElementById('modalTitle');
-            const modalMessage = document.getElementById('modalMessage');
-            const modalIconContainer = document.getElementById('modalIconContainer');
-            const modalIcon = document.getElementById('modalIcon');
-            const btnCancel = document.getElementById('modalBtnCancel');
-            const btnConfirm = document.getElementById('modalBtnConfirm');
-
-            modalTitle.textContent = title;
-            modalMessage.innerHTML = message;
-            btnCancel.textContent = options.cancelText || 'Batal';
-            btnConfirm.textContent = options.confirmText || 'Lanjutkan';
-
-            // Reset & Apply Button Colors
-            btnConfirm.className = 'w-full py-2.5 px-4 rounded-xl text-sm font-semibold transition-all text-center flex items-center justify-center ';
-            if (options.isDanger) {
-                modalIcon.setAttribute('name', 'warning-outline');
-                modalIconContainer.className = 'w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0 bg-rose-500/20 text-rose-400 border border-rose-500/30';
-                btnConfirm.className += 'bg-rose-600 hover:bg-rose-500 text-white shadow-lg shadow-rose-500/25';
-            } else {
-                modalIcon.setAttribute('name', options.icon || 'shield-checkmark-outline');
-                modalIconContainer.className = 'w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0 bg-brand-500/20 text-brand-400 border border-brand-500/30';
-                btnConfirm.className += 'bg-brand-600 hover:bg-brand-500 text-white shadow-lg shadow-brand-500/25';
-            }
-
-            modalConfirmCallback = onConfirm;
-            btnConfirm.onclick = function() {
-                closeMaoneModal();
-                if (modalConfirmCallback) modalConfirmCallback();
-            };
-
-            overlay.classList.remove('opacity-0', 'pointer-events-none');
-            box.classList.remove('scale-95');
-            box.classList.add('scale-100');
-        }
-
-        function showAlertModal(title, message, type = 'info') {
-            showConfirmModal(title, message, null, {
-                confirmText: 'Mengerti',
-                cancelText: 'Tutup',
-                isDanger: type === 'danger',
-                icon: type === 'success' ? 'checkmark-circle-outline' : (type === 'danger' ? 'alert-circle-outline' : 'information-circle-outline')
-            });
-        }
-
-        function closeMaoneModal() {
-            const overlay = document.getElementById('maoneModalOverlay');
-            const box = document.getElementById('maoneModalBox');
-            overlay.classList.add('opacity-0', 'pointer-events-none');
-            box.classList.remove('scale-100');
-            box.classList.add('scale-95');
-            modalConfirmCallback = null;
-        }
-
-        function confirmLogout(btn) {
-            showConfirmModal(
-                'Konfirmasi Keluar',
-                'Apakah Anda yakin ingin mengakhiri sesi aktif ini?',
-                function() {
-                    btn.closest('form').submit();
-                },
-                { isDanger: true, confirmText: 'Keluar Sekarang' }
-            );
-        }
-    </script>
-
-    <script>
-    function formatRupiah(number) {
-        return 'Rp ' + number.toLocaleString('id-ID');
+    function selectedPackage() {
+        return document.querySelector('.package-radio:checked');
     }
 
     function calculateEstimate() {
-        const selectedPackage = document.querySelector('.package-radio:checked');
-        const addonCheckboxes = document.querySelectorAll('.addon-checkbox:checked');
+        const pkg = selectedPackage();
+        const addons = document.querySelectorAll('.addon-checkbox:checked');
 
-        let basePrice = selectedPackage ? parseInt(selectedPackage.dataset.price) : 0;
-        let baseDays = selectedPackage ? parseInt(selectedPackage.dataset.days) : 0;
+        let total = pkg ? parseInt(pkg.dataset.price, 10) : 0;
+        let days = pkg ? parseInt(pkg.dataset.days, 10) : 0;
+        const addonIds = [];
 
-        let addonTotal = 0;
-        let addonDays = 0;
-
-        addonCheckboxes.forEach(cb => {
-            addonTotal += parseInt(cb.dataset.price);
-            addonDays += parseInt(cb.dataset.days);
+        addons.forEach(function (cb) {
+            total += parseInt(cb.dataset.price, 10);
+            days += parseInt(cb.dataset.days, 10);
+            addonIds.push(cb.value);
         });
 
-        const totalCost = basePrice + addonTotal;
-        const totalDays = baseDays + addonDays;
-        const dpAmount = Math.round(totalCost * 0.5);
-        const settlementAmount = totalCost - dpAmount;
+        const dp = Math.round(total * 0.5);
+        document.getElementById('displayTotal').textContent = rupiah(total);
+        document.getElementById('displayDays').textContent = 'Estimasi Selesai: ' + days + ' Hari Kerja';
+        document.getElementById('displayDp').textContent = rupiah(dp);
+        document.getElementById('displaySettlement').textContent = rupiah(total - dp);
 
-        document.getElementById('displayTotal').textContent = formatRupiah(totalCost);
-        document.getElementById('displayDays').textContent = `Estimasi Selesai: ${totalDays} Hari Kerja`;
-        document.getElementById('displayDp').textContent = formatRupiah(dpAmount);
-        document.getElementById('displaySettlement').textContent = formatRupiah(settlementAmount);
-    }
-
-    function selectPackageForCalculator(slug, price, days) {
-        const radio = document.querySelector(`.package-radio[value="${slug}"]`);
-        if (radio) {
-            radio.checked = true;
-            calculateEstimate();
-            document.getElementById('kalkulator').scrollIntoView({ behavior: 'smooth' });
+        const demo = document.getElementById('btnDemoCheckout');
+        if (demo) {
+            const params = new URLSearchParams();
+            if (pkg) params.set('package', pkg.value);
+            addonIds.forEach(function (id) { params.append('addons[]', id); });
+            demo.setAttribute('href', 'demo/checkout.html?' + params.toString());
         }
     }
 
-    document.querySelectorAll('.package-radio').forEach(el => el.addEventListener('change', calculateEstimate));
-    document.querySelectorAll('.addon-checkbox').forEach(el => el.addEventListener('change', calculateEstimate));
+    function selectPackage(slug) {
+        const radio = document.querySelector('.package-radio[value="' + slug + '"]');
+        if (!radio) return;
+        radio.checked = true;
+        calculateEstimate();
+        document.getElementById('kalkulator').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 
-    // Run on init
+    document.querySelectorAll('.package-radio, .addon-checkbox').forEach(function (el) {
+        el.addEventListener('change', calculateEstimate);
+    });
+
+    /* ------------------ Modal ------------------ */
+    let modalCallback = null;
+    const overlay = document.getElementById('maoneModalOverlay');
+    const box = document.getElementById('maoneModalBox');
+    const btnConfirm = document.getElementById('modalBtnConfirm');
+    const btnCancel = document.getElementById('modalBtnCancel');
+
+    function closeModal() {
+        overlay.classList.add('opacity-0', 'pointer-events-none');
+        box.classList.remove('scale-100');
+        box.classList.add('scale-95');
+        modalCallback = null;
+    }
+
+    function showModal(title, message, options) {
+        options = options || {};
+        document.getElementById('modalTitle').textContent = title;
+        document.getElementById('modalMessage').innerHTML = message;
+        btnCancel.textContent = options.cancelText || 'Tutup';
+        btnConfirm.textContent = options.confirmText || 'Lanjutkan';
+        modalCallback = options.onConfirm || null;
+        overlay.classList.remove('opacity-0', 'pointer-events-none');
+        box.classList.remove('scale-95');
+        box.classList.add('scale-100');
+    }
+
+    btnCancel.addEventListener('click', closeModal);
+    btnConfirm.addEventListener('click', function () {
+        const cb = modalCallback;
+        closeModal();
+        if (cb) cb();
+    });
+    overlay.addEventListener('click', function (e) { if (e.target === overlay) closeModal(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+
+    /* ------------------ Lain-lain ------------------ */
+    document.getElementById('year').textContent = new Date().getFullYear();
     calculateEstimate();
+
+    window.selectPackage = selectPackage;
+    window.showModal = showModal;
+})();
 </script>
 </body>
 </html>
-

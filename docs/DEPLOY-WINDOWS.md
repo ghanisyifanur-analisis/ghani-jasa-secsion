@@ -1,4 +1,12 @@
-# Deploy ke https://ghani-jasa-secsion.sahir.my.id
+> ⚠️ **Halaman situs publik sekarang berada di https://app.syifanur.my.id**
+> (statis, tanpa Docker, selalu hidup).
+>
+> Panduan di bawah ini adalah **jalur Docker yang sifatnya opsional** — untuk
+> menjalankan aplikasi Laravel penuh di komputer sendiri. Kalau tujuan Anda
+> hanya membuat situs bisa diakses di mana saja tanpa Docker, baca
+> [`DEPLOY-TANPA-DOCKER.md`](DEPLOY-TANPA-DOCKER.md) sebagai gantinya.
+
+# Deploy ke https://ghani-jasa-secsion.sahir.my.id (jalur Docker, opsional)
 
 Panduan lengkap **dari nol sampai website online 24 jam**, dijalankan dari
 **PowerShell Windows (Administrator)**. Setiap perintah punya penjelasan
